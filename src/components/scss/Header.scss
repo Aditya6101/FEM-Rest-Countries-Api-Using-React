@@ -1,0 +1,31 @@
+@import "./Variables.scss";
+
+.header {
+  padding: 3vh 5%;
+  background-color: var(--elements-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+  transition: 250ms ease-in;
+  &__text {
+    font-size: 1.3rem;
+    font-weight: $extra-bold;
+    color: var(--text-color);
+  }
+  &__dark-mode {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    p {
+      margin-left: 0.3em;
+      font-size: 1rem;
+      font-weight: $semi-bold;
+      color: var(--text-color);
+    }
+    .icons {
+      color: var(--text-color);
+    }
+  }
+}
