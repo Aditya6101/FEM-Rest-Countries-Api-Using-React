@@ -1,0 +1,23 @@
+@import "./Variables.scss";
+
+.selector {
+  background-color: var(--elements-color);
+  margin-left: 5%;
+  width: 50%;
+  padding: 1em 1.5em;
+  border-radius: $border-radius;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+  transition: 250ms ease-in;
+  border: none;
+  outline: none;
+  color: var(--input-color);
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: $semi-bold;
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  &__options {
+    font-weight: $semi-bold;
+  }
+}

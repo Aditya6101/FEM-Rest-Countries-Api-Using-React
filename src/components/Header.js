@@ -10,7 +10,7 @@ const Header = () => {
   const changeMode = () => {
     setIsDarkMode((currentState) => !currentState);
     !isDarkMode ? setModeText("Light Mode") : setModeText("Dark mode");
-    document.querySelector(".App").classList.toggle("dark");
+    document.body.classList.toggle("dark");
   };
 
   return (

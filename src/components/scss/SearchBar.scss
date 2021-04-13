@@ -1,0 +1,31 @@
+@import "./Variables.scss";
+
+.form {
+  background-color: var(--elements-color);
+  width: 90%;
+  min-width: 35%;
+  margin: 2rem auto 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: $border-radius;
+  box-shadow: 5px 5px 10px rgba(5, 4, 4, 0.05);
+  transition: 250ms ease-in;
+  &__input {
+    padding: 1em 0;
+    flex: 1;
+    border: none;
+    outline: none;
+    color: var(--input-color);
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: $semi-bold;
+    background-color: transparent;
+    &::placeholder {
+      color: var(--input-color);
+    }
+  }
+  &__icon {
+    color: var(--input-color);
+    margin: 0 1em;
+  }
+}
