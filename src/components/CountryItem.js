@@ -1,32 +1,34 @@
 import React from "react";
 import "./scss/CountryItem.scss";
 
-const CountryItem = () => {
+const CountryItem = ({
+  countryFlag,
+  countryName,
+  countryPopulation,
+  countryRegion,
+  countryCapital,
+}) => {
   return (
     <div className="card">
-      <img
-        className="card__img"
-        src="https://restcountries.eu/data/ind.svg"
-        alt="country-flag"
-      />
+      <img className="card__img" src={countryFlag} alt="country-flag" />
       <div className="card__text">
-        <h3 className="card__text__country-name">India</h3>
+        <h3 className="card__text__country-name">{countryName}</h3>
         <div className="info">
-          <p className="info__title">Population:</p>
+          <p className="info__title">Population:&nbsp;</p>
           <span className="info__data" id="population">
-            13234567989
+            {countryPopulation}
           </span>
         </div>
         <div className="info">
-          <p className="info__title">Region:</p>
+          <p className="info__title">Region:&nbsp;</p>
           <span className="info__data" id="region">
-            Asia
+            {countryRegion}
           </span>
         </div>
         <div className="info">
-          <p className="info__title">Capital:</p>
+          <p className="info__title">Capital:&nbsp;</p>
           <span className="info__data" id="region">
-            Asia
+            {countryCapital}
           </span>
         </div>
       </div>

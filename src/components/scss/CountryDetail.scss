@@ -1,0 +1,110 @@
+@import "./Variables.scss";
+
+.country-detail {
+  width: 100%;
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  .btn {
+    align-self: flex-start;
+    width: 10rem;
+    margin: 2rem 0 1rem;
+    padding: 0.5em 1.7em;
+    background-color: var(--elements-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-color);
+    font-size: 1.3rem;
+    font-family: inherit;
+    font-weight: $semi-bold;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: 250ms ease-in;
+  }
+  .main-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .country-flag {
+      align-self: center;
+      max-width: 100%;
+      margin: 2rem 0;
+    }
+    .text-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .country-info {
+        align-self: flex-start;
+        &__country-name {
+          margin: 0.5em 0;
+          color: var(--text-color);
+          font-size: 2rem;
+          font-weight: $extra-bold;
+        }
+        &__cols {
+          display: flex;
+          flex-direction: column;
+          &__col {
+            margin: 1.5rem 0;
+            .col__details {
+              margin: 0.7em 0;
+              display: flex;
+              align-items: center;
+              .details__bold {
+                font-size: 1.1rem;
+                font-weight: $semi-bold;
+                color: var(--text-color);
+              }
+              .details__light {
+                font-size: 1.1rem;
+                font-weight: $light;
+                color: var(--text-color);
+              }
+            }
+          }
+        }
+        &__border-countries {
+          width: 60%;
+          align-self: flex-start;
+          margin: 1rem 0 2rem;
+          .title {
+            font-size: 1.3rem;
+            font-weight: $semi-bold;
+            color: var(--text-color);
+          }
+          .tags-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .country-tag {
+              margin: 1.5rem 0 1rem;
+              padding: 0.5em 1.3em;
+              background-color: var(--elements-color);
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              color: var(--text-color);
+              font-size: 1rem;
+              font-family: inherit;
+              font-weight: $semi-bold;
+              border-radius: 3px;
+              cursor: pointer;
+              border: none;
+              outline: none;
+              box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+              transition: 250ms ease-in;
+            }
+          }
+        }
+      }
+    }
+  }
+}

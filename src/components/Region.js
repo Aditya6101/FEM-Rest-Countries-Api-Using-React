@@ -1,29 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./scss/Region.scss";
 
-const Region = () => {
-  const [region, setRegion] = useState("");
+const Region = ({ searchRegion }) => {
   return (
     <select
       className="selector"
       name="region"
       id="region"
-      onChange={(e) => setRegion(e.target.value)}
+      onChange={(e) => searchRegion(e.target.value)}
     >
-      <option
-        className="selector__options"
-        value="Filter by Region"
-        disabled
-        selected
-        hidden
-      >
+      <option className="selector__options" value="Filter by Region">
         Filter by Region
       </option>
       <option className="selector__options" value="Africa">
         Africa
       </option>
-      <option className="selector__options" value="America">
-        America
+      <option className="selector__options" value="Americas">
+        Americas
       </option>
       <option className="selector__options" value="Asia">
         Asia
@@ -34,7 +27,6 @@ const Region = () => {
       <option className="selector__options" value="Oceania">
         Oceania
       </option>
-      <h1>{region}</h1>
     </select>
   );
 };

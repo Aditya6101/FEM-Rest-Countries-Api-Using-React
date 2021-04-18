@@ -23,4 +23,36 @@
     align-items: center;
     justify-content: center;
   }
+  .country-detail {
+    .main-wrapper {
+      width: 100%;
+      display: flex;
+      margin-top: 2rem;
+      flex-direction: row;
+      gap: 8%;
+      .country-flag {
+        align-self: flex-start;
+        max-width: 40%;
+        margin: 0 0;
+      }
+      .text-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        .country-info {
+          width: 100%;
+          &__country-name {
+            margin: 0;
+          }
+          &__cols {
+            gap: 10%;
+            flex-direction: row;
+          }
+          &__border-countries {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
 }
