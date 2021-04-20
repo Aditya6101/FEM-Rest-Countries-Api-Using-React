@@ -23,28 +23,29 @@ function App() {
 
   return (
     <Router>
-      <Header />
-      <CountryDetail />
-      {/* <Switch>
-        <div className="App">
-          <Header />
-          <Route
-            path="/"
-            exact
-            render={() => (
-              <div className="header__container">
-                <SearchBar searchTerm={searchForCountry} />
-                <Region searchRegion={searchByRegion} />
-              </div>
-            )}
-          />
-          <Route
-            path="/"
-            exact
-            render={() => <CountryItems fetchURL={url} />}
-          />
-        </div>
-      </Switch> */}
+      <Switch>
+        <>
+          <div className="App">
+            <Header />
+            <Route
+              path="/"
+              exact
+              render={() => (
+                <div className="header__container">
+                  <SearchBar searchTerm={searchForCountry} />
+                  <Region searchRegion={searchByRegion} />
+                </div>
+              )}
+            />
+            <Route
+              path="/"
+              exact
+              render={() => <CountryItems fetchURL={url} />}
+            />
+            <Route path="/country/:countryname" component={CountryDetail} />
+          </div>
+        </>
+      </Switch>
     </Router>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import CountryItem from "./CountryItem";
 import "./scss/CountryItems.scss";
 const CountryItems = ({ fetchURL }) => {
@@ -16,7 +17,11 @@ const CountryItems = ({ fetchURL }) => {
 
   useEffect(() => {
     getData(fetchURL);
-    return function cleanup() {};
+    // return () => {
+    //   console.log("Main cleanup function started");
+    //   setData([]);
+    //   console.log("Main cleanup function ended");
+    // };
   }, [fetchURL]);
 
   function numberWithCommas(x) {
@@ -27,14 +32,15 @@ const CountryItems = ({ fetchURL }) => {
     <main>
       {data.map((countryData) => {
         return (
-          <CountryItem
-            key={countryData.name}
-            countryFlag={countryData.flag}
-            countryName={countryData.name}
-            countryPopulation={numberWithCommas(countryData.population)}
-            countryRegion={countryData.region}
-            countryCapital={countryData.capital}
-          />
+          <Link key={countryData.name} to={`/country/${countryData.name}`}>
+            <CountryItem
+              countryFlag={countryData.flag}
+              countryName={countryData.name}
+              countryPopulation={numberWithCommas(countryData.population)}
+              countryRegion={countryData.region}
+              countryCapital={countryData.capital}
+            />
+          </Link>
         );
       })}
     </main>
