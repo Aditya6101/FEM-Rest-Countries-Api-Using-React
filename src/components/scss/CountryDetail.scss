@@ -1,6 +1,7 @@
 @import "./Variables.scss";
 
 .country-detail {
+  min-height: 100vh;
   width: 100%;
   padding: 0 5%;
   display: flex;
@@ -23,7 +24,7 @@
     cursor: pointer;
     border: none;
     outline: none;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: $box-shadow-m;
     transition: 250ms ease-in;
   }
   .main-wrapper {
@@ -99,7 +100,7 @@
               cursor: pointer;
               border: none;
               outline: none;
-              box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+              box-shadow: $box-shadow-m;
               transition: 250ms ease-in;
             }
           }

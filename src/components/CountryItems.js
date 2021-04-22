@@ -2,14 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CountryItem from "./CountryItem";
 import "./scss/CountryItems.scss";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 const CountryItems = ({ fetchURL }) => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getData = async (fetchURL) => {
     try {
       const res = await fetch(fetchURL);
       const countriesData = await res.json();
-      setData(countriesData);
+      setData(Array.from(countriesData));
+      setLoading(false);
     } catch (err) {
       console.error(err);
     }
@@ -17,32 +21,36 @@ const CountryItems = ({ fetchURL }) => {
 
   useEffect(() => {
     getData(fetchURL);
-    // return () => {
-    //   console.log("Main cleanup function started");
-    //   setData([]);
-    //   console.log("Main cleanup function ended");
-    // };
+    return () => {
+      setLoading(true);
+    };
   }, [fetchURL]);
-
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
 
   return (
     <main>
-      {data.map((countryData) => {
-        return (
-          <Link key={countryData.name} to={`/country/${countryData.name}`}>
-            <CountryItem
-              countryFlag={countryData.flag}
-              countryName={countryData.name}
-              countryPopulation={numberWithCommas(countryData.population)}
-              countryRegion={countryData.region}
-              countryCapital={countryData.capital}
-            />
-          </Link>
-        );
-      })}
+      {data.length === 0 && !loading ? (
+        <h1>No Such Country</h1>
+      ) : loading ? (
+        <CircularProgress className="progress-circle" />
+      ) : (
+        data.map((countryData) => {
+          return (
+            <Link
+              className="link"
+              key={countryData.name}
+              to={`/country/${countryData.name}`}
+            >
+              <CountryItem
+                countryFlag={countryData.flag}
+                countryName={countryData.name}
+                countryPopulation={countryData.population.toLocaleString()}
+                countryRegion={countryData.region}
+                countryCapital={countryData.capital}
+              />
+            </Link>
+          );
+        })
+      )}
     </main>
   );
 };

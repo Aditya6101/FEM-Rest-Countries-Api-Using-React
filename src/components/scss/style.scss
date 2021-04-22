@@ -22,3 +22,27 @@ body {
   justify-content: center;
   margin-bottom: 1rem;
 }
+
+.progress-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.attribution {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-color);
+  font-size: 1rem;
+  &__link {
+    color: var(--text-color);
+    &:hover {
+      color: #c681ff;
+    }
+  }
+}
