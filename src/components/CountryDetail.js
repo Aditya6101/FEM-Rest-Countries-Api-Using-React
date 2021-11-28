@@ -16,7 +16,7 @@ const CountryDetail = ({ match }) => {
   const getData = async (fetchURL) => {
     try {
       const res = await fetch(
-        `https://restcountries.eu/rest/v2/name/${fetchURL}?fullText=true`
+        `https://restcountries.com/v3.1/name/${fetchURL}?fullText=true`
       );
       const countryData = await res.json();
       setData(countryData[0]);

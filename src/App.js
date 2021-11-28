@@ -9,16 +9,16 @@ import CountryDetail from "./components/CountryDetail";
 import "./components/scss/MediaQueries.scss";
 
 function App() {
-  const [url, setURL] = useState("https://restcountries.eu/rest/v2/all");
+  const [url, setURL] = useState("https://restcountries.com/v3.1/all");
 
   function searchForCountry(searchTerm) {
-    setURL(`https://restcountries.eu/rest/v2/name/${searchTerm}`);
+    setURL(`https://restcountries.com/v3.1/name/${searchTerm}`);
   }
 
   function searchByRegion(region) {
     region === "Filter by Region"
-      ? setURL("https://restcountries.eu/rest/v2/all")
-      : setURL(`https://restcountries.eu/rest/v2/region/${region}`);
+      ? setURL("https://restcountries.com/v3.1/all")
+      : setURL(`https://restcountries.com/v3.1/region/${region}`);
   }
 
   return (
