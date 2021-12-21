@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./scss/CountryDetail.scss";
 import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const CountryDetail = ({ match }) => {
-  const [fetchCountry, setFetchCountry] = useState(match.params.countryname);
+const CountryDetail = () => {
+  const { countryname } = useParams();
+  // const [fetchCountry, setFetchCountry] = useState("");
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [currencies, setCurrencies] = useState([]);
@@ -13,12 +14,15 @@ const CountryDetail = ({ match }) => {
   const [population, setPopulation] = useState("");
   const [borders, setBorders] = useState([]);
 
+  console.log(countryname);
+
   const getData = async (fetchURL) => {
     try {
       const res = await fetch(
         `https://restcountries.com/v3.1/name/${fetchURL}?fullText=true`
       );
       const countryData = await res.json();
+      console.log(countryData);
       setData(countryData[0]);
       setLoading(false);
       setCurrencies(countryData[0].currencies);
@@ -30,9 +34,11 @@ const CountryDetail = ({ match }) => {
     }
   };
 
+  console.log(data);
+
   useEffect(() => {
-    getData(fetchCountry);
-  }, [fetchCountry]);
+    getData(countryname);
+  }, [countryname]);
 
   function getCountryName(key) {
     const codeData = {
@@ -305,16 +311,20 @@ const CountryDetail = ({ match }) => {
         <CircularProgress className="progress-circle" />
       ) : (
         <div className="main-wrapper">
-          <img className="country-flag" src={data.flag} alt="country-flag" />
+          <img
+            className="country-flag"
+            src={data.flags.svg}
+            alt="country-flag"
+          />
           <div className="text-wrapper">
             <div className="country-info">
-              <h3 className="country-info__country-name">{data.name}</h3>
+              <h3 className="country-info__country-name">{data.name.common}</h3>
               <div className="country-info__cols">
                 <div className="country-info__cols__col">
-                  <div className="col__details">
+                  {/* <div className="col__details">
                     <h4 className="details__bold">Native Name:&nbsp;</h4>
                     <p className="details__light">{data.nativeName}</p>
-                  </div>
+                  </div> */}
                   <div className="col__details">
                     <h4 className="details__bold">Population:&nbsp;</h4>
                     <p className="details__light">{population}</p>
@@ -329,17 +339,17 @@ const CountryDetail = ({ match }) => {
                   </div>
                   <div className="col__details">
                     <h4 className="details__bold">Capital:&nbsp;</h4>
-                    <p className="details__light">{data.capital}</p>
+                    <p className="details__light">{data.capital[0]}</p>
                   </div>
                 </div>
                 <div className="country-info__cols__col">
                   <div className="col__details">
                     <h4 className="details__bold">Top Level Domain:&nbsp;</h4>
-                    <p className="details__light">{data.topLevelDomain}</p>
+                    <p className="details__light">{data.tld[0]}</p>
                   </div>
-                  <div className="col__details">
+                  {/* <div className="col__details">
                     <h4 className="details__bold">Currencies:&nbsp;</h4>
-                    <p className="details__light">
+                     <p className="details__light">
                       {currencies.map((currency, index) => {
                         return (
                           <span key={index}>
@@ -349,10 +359,10 @@ const CountryDetail = ({ match }) => {
                           </span>
                         );
                       })}
-                    </p>
-                  </div>
+                    </p> 
+                  </div> */}
 
-                  <div className="col__details">
+                  {/* <div className="col__details">
                     <h4 className="details__bold">Languages:&nbsp;</h4>
                     <p className="details__light">
                       {languages.map((language, index) => {
@@ -365,7 +375,7 @@ const CountryDetail = ({ match }) => {
                         );
                       })}
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -383,7 +393,7 @@ const CountryDetail = ({ match }) => {
                           key={getCountryName(border)}
                           onClick={() => {
                             setLoading(true);
-                            setFetchCountry(getCountryName(border));
+                            // setFetchCountry(getCountryName(border));
                           }}
                           to={`/country/${getCountryName(border)}`}
                         >

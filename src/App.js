@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./components/scss/Style.scss";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
@@ -23,49 +23,38 @@ function App() {
 
   return (
     <Router>
-      <Switch>
-        <>
-          <div className="App">
-            <Header />
-            <Route
-              path="/"
-              exact
-              render={() => (
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
                 <div className="header__container">
                   <SearchBar searchTerm={searchForCountry} />
                   <Region searchRegion={searchByRegion} />
                 </div>
-              )}
-            />
-            <Route
-              path="/"
-              exact
-              render={() => <CountryItems fetchURL={url} />}
-            />
-            <Route
-              path="/country/:countryname"
-              exact
-              component={CountryDetail}
-            />
-            <h3 className="attribution">
-              Challenge by&nbsp;
-              <a
-                className="attribution__link"
-                href="https://www.frontendmentor.io/"
-              >
-                Frontend Mentor.&nbsp;
-              </a>
-              Coded by&nbsp;
-              <a
-                className="attribution__link"
-                href="https://github.com/Aditya6101"
-              >
-                Aditya S. Kamble.
-              </a>
-            </h3>
-          </div>
-        </>
-      </Switch>
+                <CountryItems fetchURL={url} />
+              </>
+            }
+          />
+          <Route path="/country/:countryname" element={<CountryDetail />} />
+        </Routes>
+
+        <h3 className="attribution">
+          Challenge by&nbsp;
+          <a
+            className="attribution__link"
+            href="https://www.frontendmentor.io/"
+          >
+            Frontend Mentor.&nbsp;
+          </a>
+          Coded by&nbsp;
+          <a className="attribution__link" href="https://github.com/Aditya6101">
+            Aditya S. Kamble.
+          </a>
+        </h3>
+      </div>
     </Router>
   );
 }

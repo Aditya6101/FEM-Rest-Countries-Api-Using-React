@@ -12,7 +12,7 @@ const CountryItems = ({ fetchURL }) => {
     try {
       const res = await fetch(fetchURL);
       const countriesData = await res.json();
-      setData(Array.from(countriesData));
+      setData(countriesData);
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -37,15 +37,15 @@ const CountryItems = ({ fetchURL }) => {
           return (
             <Link
               className="link"
-              key={countryData.name}
-              to={`/country/${countryData.name}`}
+              key={countryData.name.common}
+              to={`/country/${countryData.name.common}`}
             >
               <CountryItem
-                countryFlag={countryData.flag}
-                countryName={countryData.name}
+                countryFlag={countryData.flags.svg}
+                countryName={countryData.name.common}
                 countryPopulation={countryData.population.toLocaleString()}
                 countryRegion={countryData.region}
-                countryCapital={countryData.capital}
+                countryCapital="capital"
               />
             </Link>
           );
